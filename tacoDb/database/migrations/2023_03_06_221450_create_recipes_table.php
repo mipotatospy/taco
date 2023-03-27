@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('category');
             $table->string('procedure');
+            $table->string('picture');
         });
     }
 

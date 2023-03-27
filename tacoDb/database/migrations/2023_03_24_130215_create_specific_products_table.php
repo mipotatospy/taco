@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('packaging');
             $table->string('procedure');
             $table->string('ingredients');
+            $table->string('picture');
+            $table->foreignId('product_id')->constrained();
         });
     }
 

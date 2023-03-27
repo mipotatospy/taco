@@ -10,12 +10,13 @@ class User_List extends Model
 {
     use HasFactory;
 
-    public function user(): BelongsTo
+    public function users(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function shoppingList(): BelongsTo
+    
+    public function shoppingLists(): BelongsTo
     {
         return $this->belongsTo(ShoppingList::class);
     }

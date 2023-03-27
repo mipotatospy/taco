@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
@@ -17,6 +14,7 @@ return new class extends Migration
             $table->string('description');
             $table->boolean('bought');
             $table->date('expiration date');
+            $table->string('picture');
         });
     }
 

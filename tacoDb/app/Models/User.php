@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class User extends Authenticatable
 {
@@ -43,8 +44,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function user_list(): HasMany
+    public function user_lists(): HasMany
     {
         return $this->hasMany(User_list::class);
+    }
+
+    
+    public function lists(): HasManyThrough
+    {
+        return $this->through('user_lists')->has('shoppingLists');
+    }
+
+    public function recipes(): HasManyThrough
+    {
+        return $this->hasManyThrough(Favourites::class, Recipe::class);
     }
 }
