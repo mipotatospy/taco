@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('specific_products', function (Blueprint $table) {
+        Schema::create('lists_products', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('transportation');
-            $table->bool('seasonality');
-            $table->string('packaging');
-            $table->string('procedure');
-            $table->string('ingredients');
-            $table->string('picture');
             $table->foreignId('product_id')->constrained();
+            $table->foreignId('shopping_lists_id')->constrained();
+            $table->int('quantity');
         });
     }
 
