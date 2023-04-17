@@ -17,22 +17,21 @@ return new class extends Migration
             $table->string('picture');
         });*/
 
-        Schema::create('cb_category', function($table){
+        Schema::create('products', function($table){
             $table->integer('id')->primary()->unique()->unsigned();
-            $table->integer('parent_id')->nullable();  
+            $table->integer('parent_id')->unsigned()->nullable();  
             $table->string('name');
-            $table->string('picture');
-        });
-
-        Schema::table('cb_category', function (Blueprint $table) {
-            $table->id();
-            $table->foreign('parent_id')->references('id')->on('cb_category')->onUpdate('cascade')->onDelete('cascade');
             $table->string('transportation');
-            $table->bool('seasonality');
+            $table->boolean('seasonality');
             $table->string('packaging');
             $table->string('procedure');
             $table->string('ingredients');
             $table->string('picture');
+            $table->date('expiration');
+        });
+
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreign('parent_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

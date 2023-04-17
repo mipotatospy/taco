@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('lists_products', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('product_id')->constrained();
+            $table->integer('product_id')->unsigned()->nullable();
+            //$table->foreignId('product_id')->constrained();
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('shopping_lists_id')->constrained();
-            $table->int('quantity');
+            $table->integer('quantity');
         });
     }
 
