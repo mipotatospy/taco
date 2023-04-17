@@ -16,15 +16,15 @@ class ProductSeeder extends Seeder
         $table->integer('id')->primary()->unique()->unsigned();
             $table->integer('parent_id')->unsigned()->nullable();  
             $table->string('name');
-            $table->string('transportation');
-            $table->boolean('seasonality');
+            $table->string('transportation'); 
+            $table->boolean('seasonality'); -->
             $table->string('packaging');
-            $table->string('procedure');
+            $table->string('procedure'); -->
             $table->string('ingredients');
             $table->string('picture');
-            $table->date('expiration');
+            $table->date('expiration'); -->
         */
-        /*$products = [
+        $products = [
             [
                 'name' => 'Frutta e verdura',
                 'transportation' => 'Frutta e verdura',
@@ -116,6 +116,6 @@ class ProductSeeder extends Seeder
             ],
         ];
         
-        DB::table('products')->insert($products);*/
+        DB::table('products')->insert($products);
     }
 }
