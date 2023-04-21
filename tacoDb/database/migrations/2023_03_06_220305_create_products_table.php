@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('procedure');
             $table->string('ingredients');
             $table->string('picture');
-            $table->date('expiration');
+            $table->date('expiration')->nullable();
         });
 
         Schema::table('products', function (Blueprint $table) {
