@@ -13,7 +13,8 @@ class ShoppingListController extends Controller
      */
     public function index()
     {
-        //
+        return view('lists.create', [
+        ]);
     }
 
     /**
@@ -21,7 +22,7 @@ class ShoppingListController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
