@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->string('category');
+            //$table->string('category');
+            $table->foreignId('category_id')->constrained();
+            //$table->foreignId('product_id')->constrained();
             $table->string('procedure');
             $table->string('picture');
         });
