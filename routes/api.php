@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Api\ShoppingListController;
+use App\Http\Controllers\Api\RecipeController;
+use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\FavouriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +27,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/signup', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
-Route::apiResource('/shoppingLists', ShoppingListController::class)->middleware('auth:sanctum');;
+
+Route::apiResource('/shoppingLists', ShoppingListController::class)->middleware('auth:sanctum');
+Route::apiResource('/recipes', RecipeController::class)->middleware('auth:sanctum');
+//Route::apiResource('/favourites', [RecipeController::class, 'favourites'])->middleware('auth:sanctum');
+Route::apiResource('/products', ProductController::class);
+Route::apiResource('/categories', CategoryController::class);
+Route::apiResource('/favourites', FavouriteController::class)->middleware('auth:sanctum');

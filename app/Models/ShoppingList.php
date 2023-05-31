@@ -12,28 +12,18 @@ class ShoppingList extends Model
 {
     use HasFactory;
 
-    // public function user_lists(): HasMany
-    // {
-    //     return $this->hasMany(User_list::class);
-    // }
-
-    /*public function users(): HasManyThrough
-    {
-        return $this->through('user_lists')->has('users');
-    }*/
+    protected $fillable = [
+        'name',
+        'picture',
+    ];
 
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'user__lists');
     }
 
-    public function generic_products(): BelongsToMany
+    public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class);
-    }
-
-    public function specific_products(): HasManyThrough
-    {
-        return $this->hasManyThrough(Product::class, SpecificProduct::class);
+        return $this->belongsToMany(Product::class, 'lists_products', 'shopping_lists_id', 'product_id');
     }
 }

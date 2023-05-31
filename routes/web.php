@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShoppingListController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\RecipeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,14 @@ Route::get('/', function () {
 });
 
 Route::resource('categories', CategoryController::class);
-
 Route::resource('products', ProductController::class);
-
-Route::resource('lists', ShoppingListController::class);
+//Route::resource('lists', ShoppingListController::class);
+Route::get('lists', [ShoppingListController::class, 'index']);
+Route::resource('recipes', RecipeController::class);
 
 Route::resource('form', FormController::class);
+
+//Route::resource('userFavourites', [RecipeController::class, 'show']);
+Route::get('/userFavourites', [RecipeController::class, 'show']);
+
+

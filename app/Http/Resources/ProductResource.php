@@ -1,13 +1,31 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Http\Resources;
 
-return new class extends Migration
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class ProductResource extends JsonResource
 {
-    public function up(): void
+    /**
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(Request $request): array
     {
+        return [
+            'id' => $this->id,
+            'parent_id' => $this->parent_id,
+            'name' => $this->name,
+            'transportation' => $this->transportation,
+            'seasonality' => $this->seasonality,
+            'procedure' => $this->procedure,
+            'ingredients' => $this->ingredients,
+            'picture' => $this->picture,
+            'expiration' => $this->expiration,
+        ];
+        /*
         Schema::create('products', function($table){
             $table->integer('id')->primary()->unique()->unsigned();
             $table->integer('parent_id')->unsigned()->nullable();  
@@ -24,15 +42,7 @@ return new class extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->foreign('parent_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
         });
+        */
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('products');
-    }
-};
-
-
+}

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+//use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
@@ -56,8 +56,8 @@ class User extends Authenticatable
     }
 
 
-    public function recipes(): HasManyThrough
+    public function recipes(): BelongsToMany
     {
-        return $this->hasManyThrough(Favourites::class, Recipe::class);
+        return $this->belongsToMany(Recipe::class, 'favourites');
     }
 }

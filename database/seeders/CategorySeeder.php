@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = [
+        /*$categories = [
             [
                 'name' => 'Frutta e verdura',
                 'picture' => 'xyz',
@@ -85,7 +85,11 @@ class CategorySeeder extends Seeder
             ],
         ];
         
-        DB::table('categories')->insert($categories);
+        DB::table('categories')->insert($categories);*/
+
+        Category::factory()
+            ->count(50)
+            ->create();
     }
 }
 

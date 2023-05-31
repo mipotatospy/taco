@@ -25,10 +25,16 @@ class ShoppingListController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
         $shoppingList = new ShoppingList;
-        //$shoppingList->name = $request->name;
         $shoppingList->picture = $request->picture;
+        $shoppingList->name = $request->name;
         $shoppingList->save();
+        foreach ($request->products as $product) {
+            $shoppingList->products()->attach($product['product_id'], ['quantity' => $product['quantity']]);
+        }
+        $shoppingList->users()->attach($request->users_ids);
+        $shoppingList->users()->attach($user->id );
         return new ShoppingListResource($shoppingList);
     }
 
@@ -37,7 +43,10 @@ class ShoppingListController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = Auth::user();
+        $lists = $user->lists()->get();
+        $list = $lists->find($id);
+        return new ShoppingListResource($list);
     }
 
     /**
@@ -45,7 +54,15 @@ class ShoppingListController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = Auth::user();
+        $lists = $user->lists()->get();
+        $list = $lists->find($id);
+        $list->name=$request->name;
+        $list->picture=$request->picture;
+        $list->save();
+        return [
+            'message' => 'List updated'
+        ];
     }
 
     /**
@@ -53,6 +70,12 @@ class ShoppingListController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        /*$user = Auth::user();
+        $lists = $user->lists()->get();
+        $list = $lists->find($id);
+        $list->delete();
+        return [
+            'message' => 'list deleted'
+        ];*/
     }
 }

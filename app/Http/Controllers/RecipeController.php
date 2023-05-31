@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRecipeRequest;
 use App\Http\Requests\UpdateRecipeRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Recipe;
 
 class RecipeController extends Controller
@@ -13,7 +14,10 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+        $recipe = Recipe::all();
+        return view('recipes.index', [
+            'recipe' => $recipe,
+        ]);
     }
 
     /**
@@ -37,7 +41,14 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        //
+        //recipes()
+        $user = Auth::user();
+        $recipes = $user->recipes()->get();
+        //return ShoppingListResource::collection($recipes);
+        return view('recipes.show', [
+            'recipe' => $recipes,
+        ]);
+        
     }
 
     /**

@@ -11,18 +11,23 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'transportation',
+        'seasonality',
+        'packaging',
+        'procedure',
+        'ingredients',
+        'picture',
+    ];
+
     public function recipes(): BelongsToMany
     {
         return $this->belongsToMany(Recipe::class);
     }
 
-    public function specific_products(): HasMany
-    {
-        return $this->hasMany(SpecificProduct::class);
-    }
-
     public function lists(): BelongsToMany
     {
-        return $this->belongsToMany(ShoppingList::class);
+        return $this->belongsToMany(Product::class, 'lists_products', 'product_id', 'shopping_lists_id');
     }
 }
