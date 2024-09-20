@@ -15,18 +15,6 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        /*
-        $table->integer('id')->primary()->unique()->unsigned();
-            $table->integer('parent_id')->unsigned()->nullable();  
-            $table->string('name');
-            $table->string('transportation'); 
-            $table->boolean('seasonality'); -->
-            $table->string('packaging');
-            $table->string('procedure'); -->
-            $table->string('ingredients');
-            $table->string('picture');
-            $table->date('expiration'); -->
-        */
         $products = [
             [
                 'id' => 1,
@@ -38,6 +26,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'flavonoidi, pectina, acido citrico, acido malico, acqua, proteine, fruttosio, vitamine A, C, PP, B1 e B2',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 2,
@@ -49,6 +38,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'flavonoidi, pectina, acido citrico, acido malico, acqua, proteine, fruttosio, vitamine A, C, PP, B1 e B2',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 3,
@@ -60,6 +50,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'flavonoidi, pectina, acido citrico, acido malico, acqua, proteine, fruttosio, vitamine A, C, PP, B1 e B2',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 4,
@@ -71,6 +62,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Acqua, vitamine A, C, E, K, niacina, acido pantotenico, piridossina, riboflavina, tiamina, folati, potassio, fosforo, magnesio, calcio, sodio, ferro, zinco, manganese, selenio',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 5,
@@ -82,6 +74,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Acqua, vitamine A, C, E, K, niacina, acido pantotenico, piridossina, riboflavina, tiamina, folati, potassio, fosforo, magnesio, calcio, sodio, ferro, zinco, manganese, selenio',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 6,
@@ -93,6 +86,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Acqua, vitamine A, C, E, K, niacina, acido pantotenico, piridossina, riboflavina, tiamina, folati, potassio, fosforo, magnesio, calcio, sodio, ferro, zinco, manganese, selenio',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 7,
@@ -104,6 +98,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Acqua, sale, soia, saccarosio, destrosio, emulsionanti: E472e, E471, E481, E300, E516, E262, E210, E327',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 8,
@@ -115,6 +110,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Acqua, sale, soia, saccarosio, destrosio, emulsionanti: E472e, E471, E481, E300, E516, E262, E210, E327',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 9,
@@ -126,6 +122,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Acqua, sale, soia, saccarosio, destrosio, emulsionanti: E472e, E471, E481, E300, E516, E262, E210, E327',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 10,
@@ -137,6 +134,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Acqua, Sodio, Potassio, Calcio, Fosforo, Ferro, Tiamina, Riboflavina, Niacina, Folati, Vitamine A e C, Lisina, Istidina, Arginina, Acido aspartico, Treonina, Serina, Prolina, Glicina, Alanina',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 11,
@@ -148,6 +146,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Acqua, Sodio, Potassio, Calcio, Fosforo, Ferro, Tiamina, Riboflavina, Niacina, Folati, Vitamine A e C, Lisina, Istidina, Arginina, Acido aspartico, Treonina, Serina, Prolina, Glicina, Alanina',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 12,
@@ -159,6 +158,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Acqua, Sodio, Potassio, Calcio, Fosforo, Ferro, Tiamina, Riboflavina, Niacina, Folati, Vitamine A e C, Lisina, Istidina, Arginina, Acido aspartico, Treonina, Serina, Prolina, Glicina, Alanina',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 13,
@@ -170,6 +170,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Riboflavina, niacina, tiamina, vitamina A, fosforo, sodio, potassio, calcio, magnesio, ferro, zinco, selenio, colina',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 14,
@@ -181,6 +182,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Riboflavina, niacina, tiamina, vitamina A, fosforo, sodio, potassio, calcio, magnesio, ferro, zinco, selenio, colina',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 15,
@@ -192,6 +194,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Riboflavina, niacina, tiamina, vitamina A, fosforo, sodio, potassio, calcio, magnesio, ferro, zinco, selenio, colina',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 16,
@@ -203,6 +206,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Glucosio, galattosio, calcio',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 17,
@@ -214,6 +218,7 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Glucosio, galattosio, calcio',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
             [
                 'id' => 18,
@@ -225,9 +230,13 @@ class ProductSeeder extends Seeder
                 'procedure' => 'xyz',
                 'ingredients' => 'Glucosio, galattosio, calcio',
                 'picture' => 'xyz',
+                'bought' => False,
             ],
         ];
         
         DB::table('products')->insert($products);
+        /*Product::factory()
+            ->count(50)
+            ->create();*/
     }
 }

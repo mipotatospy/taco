@@ -13,9 +13,9 @@ class ShoppingListController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
+        /*$user = Auth::user();
         $lists = $user->lists()->get();
-        return View::make('lists.index');
+        return View::make('lists.index');*/
     }
 
     /**
@@ -23,7 +23,7 @@ class ShoppingListController extends Controller
      */
     public function create()
     {
-        return View::make('lists.create');
+        /*return View::make('lists.create');*/
     }
 
     /**

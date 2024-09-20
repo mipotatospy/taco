@@ -19,7 +19,7 @@ class ShoppingList extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'user__lists');
+        return $this->belongsToMany(User::class, 'user_lists');
     }
 
     public function products(): BelongsToMany

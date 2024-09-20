@@ -25,9 +25,12 @@ class FavouriteController extends Controller
      */
     public function store(Request $request)
     {
-        $favourite = new Favourite;
+        $favourite = new Favourites;
         $user = Auth::user();
-        $favourite->user_id = $user;
+        $favourite->user_id = $user->id;
+        $favourite->recipe_id = $request->recipe_id;
+        $favourite->save();
+        return ($favourite);
     }
 
     /**
@@ -43,14 +46,16 @@ class FavouriteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(string $id)
     {
-        //
+        $user = Auth::user();
+        $recipes = $user->recipes()->get();
+        $favourite = $recipes->find($id);
+        $favourite->users()->detach();
+        $user->recipes()->detach($id);
+        return response()->json(['message' => 'favourite deleted successfully']);
     }
 }

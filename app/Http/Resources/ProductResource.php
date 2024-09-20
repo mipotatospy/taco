@@ -25,24 +25,6 @@ class ProductResource extends JsonResource
             'picture' => $this->picture,
             'expiration' => $this->expiration,
         ];
-        /*
-        Schema::create('products', function($table){
-            $table->integer('id')->primary()->unique()->unsigned();
-            $table->integer('parent_id')->unsigned()->nullable();  
-            $table->string('name');
-            $table->string('transportation');
-            $table->boolean('seasonality');
-            $table->string('packaging');
-            $table->string('procedure');
-            $table->string('ingredients');
-            $table->string('picture');
-            $table->date('expiration')->nullable();
-        });
-
-        Schema::table('products', function (Blueprint $table) {
-            $table->foreign('parent_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
-        });
-        */
     }
 
 }

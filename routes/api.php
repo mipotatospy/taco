@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ShoppingListController;
 use App\Http\Controllers\Api\RecipeController;
 use App\Http\Controllers\Api\ProductController;
@@ -30,7 +30,6 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:sanc
 
 Route::apiResource('/shoppingLists', ShoppingListController::class)->middleware('auth:sanctum');
 Route::apiResource('/recipes', RecipeController::class)->middleware('auth:sanctum');
-//Route::apiResource('/favourites', [RecipeController::class, 'favourites'])->middleware('auth:sanctum');
 Route::apiResource('/products', ProductController::class);
 Route::apiResource('/categories', CategoryController::class);
 Route::apiResource('/favourites', FavouriteController::class)->middleware('auth:sanctum');

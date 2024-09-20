@@ -20,6 +20,8 @@ class ShoppingListResource extends JsonResource
             'picture' => $this->picture,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'products' => $this->products,
+            'users' => $this->users
         ];
     }
 }

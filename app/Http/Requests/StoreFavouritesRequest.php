@@ -25,4 +25,11 @@ class StoreFavouritesRequest extends FormRequest
             //
         ];
     }
+
+    /*$favourite = new Favourites;
+        $user = Auth::user();
+        $favourite->user_id = $user->id;
+        $favourite->recipe_id = $request->recipe_id;
+        $favourite->save();
+        return ($favourite);*/
 }

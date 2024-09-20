@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('procedure');
             $table->string('ingredients');
             $table->string('picture');
+            $table->boolean('bought');
             $table->date('expiration')->nullable();
+            $table->timestamps();
         });
 
         Schema::table('products', function (Blueprint $table) {

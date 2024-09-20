@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\ShoppingListResource;
+use App\Models\Product;
 use App\Models\ShoppingList;
+use Illuminate\Support\Facades\DB;
 
 class ShoppingListController extends Controller
 {
@@ -34,8 +36,12 @@ class ShoppingListController extends Controller
             $shoppingList->products()->attach($product['product_id'], ['quantity' => $product['quantity']]);
         }
         $shoppingList->users()->attach($request->users_ids);
-        $shoppingList->users()->attach($user->id );
-        return new ShoppingListResource($shoppingList);
+        $shoppingList->users()->attach($user->id);
+        //return new ShoppingListResource($shoppingList);
+        return [
+            'message' => 'List created: ',
+            new ShoppingListResource($shoppingList)
+        ];
     }
 
     /**
@@ -43,10 +49,8 @@ class ShoppingListController extends Controller
      */
     public function show(string $id)
     {
-        $user = Auth::user();
-        $lists = $user->lists()->get();
-        $list = $lists->find($id);
-        return new ShoppingListResource($list);
+        $shoppingList = ShoppingList::with(['products','users'])->findOrFail($id);
+        return new ShoppingListResource($shoppingList);
     }
 
     /**
@@ -56,12 +60,22 @@ class ShoppingListController extends Controller
     {
         $user = Auth::user();
         $lists = $user->lists()->get();
-        $list = $lists->find($id);
-        $list->name=$request->name;
-        $list->picture=$request->picture;
-        $list->save();
+        $shoppingList = $lists->find($id);
+        $shoppingList->name=$request->name;
+        $shoppingList->picture=$request->picture;
+        $shoppingList->save();
+        foreach ($shoppingList->products as $product) {
+            $shoppingList->products()->detach($product['product_id']);
+        }
+        foreach ($request->products as $product) {
+            $shoppingList->products()->attach($product['product_id'], ['quantity' => $product['quantity']]);
+        }
+        $shoppingList->users()->detach();
+        $shoppingList->users()->attach($request->users_ids);
+        $shoppingList->users()->attach($user->id);
         return [
-            'message' => 'List updated'
+            'message' => 'List updated: ',
+            new ShoppingListResource($shoppingList)
         ];
     }
 
@@ -70,12 +84,12 @@ class ShoppingListController extends Controller
      */
     public function destroy(string $id)
     {
-        /*$user = Auth::user();
+        $user = Auth::user();
         $lists = $user->lists()->get();
-        $list = $lists->find($id);
-        $list->delete();
-        return [
-            'message' => 'list deleted'
-        ];*/
+        $shoppingList = $lists->find($id);
+        $shoppingList->products()->detach();
+        $shoppingList->users()->detach();
+        $shoppingList->delete();
+        return response()->json(['message' => 'ShoppingList deleted successfully']);
     }
 }

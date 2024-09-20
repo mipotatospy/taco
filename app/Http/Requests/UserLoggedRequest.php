@@ -23,9 +23,8 @@ class UserLoggedRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:users|max:255',
-            'email'=>'required|email:rfc,dns|max:255',
-            'required', 'confirmed', Password::min(8)
+            'email' => 'required|email:rfc,dns|max:255',
+            'password' => 'required', 'confirmed', Password::min(8)
         ];
     }
 }

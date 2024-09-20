@@ -46,13 +46,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-    /*public function lists(): HasManyThrough
-    {
-        return $this->through('user_lists')->has('shoppingLists');
-    }*/
     public function lists(): BelongsToMany
     {
-        return $this->belongsToMany(ShoppingList::class, 'user__lists');
+        return $this->belongsToMany(ShoppingList::class, 'user_lists');
     }
 
 

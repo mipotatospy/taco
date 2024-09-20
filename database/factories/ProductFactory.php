@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+use App\Models\Product;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
@@ -14,27 +16,25 @@ class ProductFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
     public function definition(): array
     {
-        /*
-        $table->integer('id')->primary()->unique()->unsigned();
-            $table->integer('parent_id')->unsigned()->nullable();  
-            $table->string('name');
-            $table->string('transportation');
-            $table->boolean('seasonality');
-            $table->string('packaging');
-            $table->string('procedure');
-            $table->string('ingredients');
-            $table->string('picture');
-            $table->date('expiration');
-        */
+        static $order = 1; 
+        $parent = Product::all()->pluck('id')->toArray(); 
+
         return [
-            /*'firstname' => fake()->firstName(),
-            'lastname' => fake()->lastName(),
-            'expiration' => fake()->date('-30 years', '-19years'),
+            'id' => $order++,
+            'parent_id'=>fake()->numberBetween(1, 50),
+            'name' => fake()->word(),
+            'transportation' => fake()->paragraph(),
             'seasonality' => fake()->boolean(),
-            'height' => fake()->numberBetween(170, 200),
-            'user_id' => fake()->randomElement($usersIDs),*/
+            'packaging' => fake()->paragraph(),
+            'procedure' => fake()->paragraph(),
+            'ingredients' => fake()->word(),
+            'picture' => Str::random(10),
+            'parent_id' => fake()->randomElement($parent),
+            'expiration' => fake()->date('Y_m_d'),
         ];
     }
 }
+
